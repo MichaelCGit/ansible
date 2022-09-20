@@ -28,4 +28,4 @@
 
     - name: Windows Defender Scan with Exclusions
       win_shell: Set-MpPreference -ExclusionPath C:\Users\Michael
-      win_shell: Start-MpScan -ScanType QuickScan
+      win_shell: Start-MpScan -ScanType QuickScan1
