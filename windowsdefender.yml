@@ -1,4 +1,8 @@
 ---
+
+- name: Run Ansible playbook
+  uses: dawidd6/action-ansible-playbook@v2.5.0
+
 - name: Create and enable Windows Firewall rule on port 25-TCP and 5724-UDP Inbound then run Windows Defender Scan
   hosts: windows-dev
 
