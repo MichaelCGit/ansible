@@ -1,0 +1,32 @@
+---
+-
+  hosts: windows-dev
+  name: "windows server install"
+  tasks:
+
+    -
+      name: "Firewall rule to allow SMTP on TCP port 25"
+      win_firewall_rule:
+        action: allow
+        direction: in
+        enabled: false
+        localport: 25
+        name: SMTP
+        protocol: tcp
+        state: present
+
+
+    - name: Install Putty SSH Tool
+      win_package:
+        path: https://derbyshireapps.blob.core.windows.net/derbyshireapps/putty-64bit-0.77-installer.msi
+        product_id: '{E078C644-A120-4668-AD62-02E9FD530190}'
+        state: present
+
+
+
+
+    - name: Install Google Chrome
+      win_package:
+        path: https://derbyshireapps.blob.core.windows.net/derbyshireapps/ChromeSetup.exe
+        product_id: '{B30A7911-8538-3B81-A915-701B06CB289B}'
+        state: present

@@ -1,0 +1,17 @@
+[windows-dev]
+10.0.0.4
+10.0.0.5
+
+[windows-dev:vars]
+
+ansible_user=Michael
+ansible_port=5986
+ansible_connection=winrm
+ansible_password=Sonic1989*
+ansible_winrm_server_cert_validation=ignore
+
+[linux-prod:vars]
+ansible_user=Michael
+ansible_port=22
+ansible_connection=ssh
+ansible_password=Jamaica1001989*

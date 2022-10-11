@@ -1,0 +1,12 @@
+- name: Stop the Spooler service
+  hosts: windowsdev 
+
+  tasks: 
+
+   - name: Stop service Spooler
+     
+     win_service:
+
+       name: Spooler
+       
+       state: stopped

@@ -1,0 +1,35 @@
+---
+
+- name: Run Ansible playbook
+  uses: dawidd6/action-ansible-playbook@v2.5.0
+
+- name: Create and enable Windows Firewall rule on port 25-TCP and 5724-UDP Inbound then run Windows Defender Scan
+  hosts: windows-dev
+
+
+  tasks:
+
+    - name: Firewall rule to allow SMTP on TCP port 25
+      community.windows.win_firewall_rule:
+        name:  SMTP
+        localport: 25
+        action: allow
+        direction: in
+        protocol: tcp
+        state: present
+        enabled: yes
+
+    - name: Firewall rule to allow SCOM Reporting on UDP port 5724
+      community.windows.win_firewall_rule:
+        name:  SCOM Reporting 5724 UDP
+        localport: 5724
+        action: allow
+        direction: in
+        protocol: udp
+        state: present
+        enabled: yes
+
+
+    - name: Windows Defender Scan with Exclusions
+      win_shell: Set-MpPreference -ExclusionPath C:\Users\Michael
+      win_shell: Start-MpScan -ScanType QuickScan
